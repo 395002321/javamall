@@ -113,8 +113,8 @@ public class EopSetting {
 	public static String VERSION =""; //版本
 	public static String PRODUCTID ="";
 	
-//	public static String INSTALL_LOCK ="NO"; //是否已经安装
-	public static String INSTALL_LOCK ="YES"; //是否已经安装
+	public static String INSTALL_LOCK ="NO"; //是否已经安装
+//	public static String INSTALL_LOCK ="YES"; //是否已经安装
 	
 	public static List<String> safeUrlList;
 	public static String BACKEND_PAGESIZE = "15";
@@ -131,7 +131,7 @@ public class EopSetting {
 			InputStream in  = FileUtil.getResourceAsStream("eop.properties");
 			Properties props = new Properties();
 			props.load(in);
-			init(props);
+			init(props); 
 		}catch(Exception e){
 			e.printStackTrace();
 		}
