@@ -131,7 +131,7 @@ public class EopSetting {
 			InputStream in  = FileUtil.getResourceAsStream("eop.properties");
 			Properties props = new Properties();
 			props.load(in);
-			init(props); 
+			init(props);  //你好
 		}catch(Exception e){
 			e.printStackTrace();
 		}
