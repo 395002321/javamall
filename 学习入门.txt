@@ -1,0 +1,10 @@
+1. 为了安装一次之后, 在其他环境不需要再安装, 跟断点找出安装程序, 
+        在 web.xml 中发现自定义的 filter DispatcherFilter, 过滤所有请求, 进入其中, 在第 55 行发现安装判断条件
+        第一次安装之后可在此修改条件
+2. 当第一次请求项目时,在 DispatcherFilter 中通过一系列的 uri 判断, 在第 69 行进入 EopContextIniter 的 init 方法中,
+        设置参数, 此时的 uri 是 install/index.jsp, 找到 index.jsp 页面, 重定向到 install.do 请求.
+3. 寻找安装之后的数据库配置文件
+        根据 2 中的请求, 进入到了 step1.jsp, 但是如何根据 step1.jsp 中的 install/install!step2.do 请求进入到 step2.jsp 页面,有点没头绪(通配符)
+   step2.jsp 中会先测试数据库连接, 如果没有错误的话, 提交表单 , 进入到 EopInstallAction 的 step3 方法中, 保存数据库配置文件,返回到 step3.jsp
+        页面,此时生成的配置文件只是在 tomcat 下, eclipse 中的配置文件并没有改变, 重新发布的话会丢失,所以要修改项目中的 jdbc.properties,改成对应的连接
+4. 安装.创建数据库. 创建数据库的程序还没找到, 创建表和初始化数据, 根据的是各个模块下的 xml, base.xml, cms.xml等等
